@@ -29,7 +29,7 @@ void dec2bin(int n)
 {
 	for (int i = 31; i >= 0; i--)
 	{
-		if ((a&(1 << i)) == 0)
+		if ((n&(1 << i)) == 0)
 			printf("0");
 		else
 			printf("1");
