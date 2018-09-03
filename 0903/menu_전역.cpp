@@ -50,8 +50,11 @@ int menu_select(void)
 	{
 		printf("메뉴를 선택하세요(지불은 0) : ");
 		scanf("%d", &select);
-		total += price[select];
-		printf("선택한 메뉴는 %s, 금액 %d\n", menu[select], total);
+		if (select != 0)
+		{
+			total += price[select];
+			printf("선택한 메뉴는 %s, 금액 %d\n", menu[select], total);
+		}
 		printf("\n");
 	} while (select != 0);
 	return total;
