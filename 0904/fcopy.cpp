@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 		return 1;
 	}
 	fp2 = fopen(argv[2], "w");
-	if (fp1 == NULL)
+	if (fp2 == NULL)
 	{
 		printf("%s 파일 열기 실패.\n", argv[2]);
 		return 1;
