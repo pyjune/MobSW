@@ -44,7 +44,7 @@ static void LCD_cmdH(int cmd)
 	HAL_GPIO_WritePin(TLCD_GPIO, TLCD_D5, (cmd&(1<<5))>>5);
 	HAL_GPIO_WritePin(TLCD_GPIO, TLCD_D4, (cmd&(1<<4))>>4);
 	HAL_GPIO_WritePin(TLCD_GPIO, TLCD_E, GPIO_PIN_SET);
-	HAL_Delay(1);
+	HAL_Delay(5);
 	HAL_GPIO_WritePin(TLCD_GPIO, TLCD_E, GPIO_PIN_RESET);
 }
 static void LCD_cmdL(int cmd)
@@ -55,7 +55,7 @@ static void LCD_cmdL(int cmd)
 	HAL_GPIO_WritePin(TLCD_GPIO, TLCD_D5, (cmd&(1<<1))>>1);
 	HAL_GPIO_WritePin(TLCD_GPIO, TLCD_D4, (cmd&(1<<0))>>0);
 	HAL_GPIO_WritePin(TLCD_GPIO, TLCD_E, GPIO_PIN_SET);
-	HAL_Delay(1);
+	HAL_Delay(5);
 	HAL_GPIO_WritePin(TLCD_GPIO, TLCD_E, GPIO_PIN_RESET);
 }
 
