@@ -196,6 +196,8 @@ void SysTick_Handler(void)
 void EXTI2_IRQHandler(void)
 {
   /* USER CODE BEGIN EXTI2_IRQn 0 */
+HAL_delay(30);
+if(HAL_GPIO_ReadPin(J_CENTER_GPIO_Port, J_CENTER_Pin )==GPIO_PIN_SET)
 	jogStatus = J_CENTER;
   /* USER CODE END EXTI2_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_2);
