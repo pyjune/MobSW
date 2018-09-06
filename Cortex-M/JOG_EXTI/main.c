@@ -95,6 +95,26 @@ int main(void)
 		  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_2);
 		  jogStatus = J_NONE;
 	  }
+	  if(jogStatus==J_LEFT)
+	  {
+		  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_2);
+		  jogStatus = J_NONE;
+	  }
+	  if(jogStatus==J_RIGHT)
+	  {
+		  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_3);
+		  jogStatus = J_NONE;
+	  }
+	  if(jogStatus==J_UP)
+	  {
+		  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_4);
+		  jogStatus = J_NONE;
+	  }
+	  if(jogStatus==J_DOWN)
+	  {
+		  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_5);
+		  jogStatus = J_NONE;
+	  }
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
@@ -189,15 +209,26 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : J_CENTER_Pin */
-  GPIO_InitStruct.Pin = J_CENTER_Pin;
+  /*Configure GPIO pins : PB0 PB1 J_CENTER_Pin PB12 
+                           PB13 */
+  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|J_CENTER_Pin|GPIO_PIN_12 
+                          |GPIO_PIN_13;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(J_CENTER_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
-  HAL_NVIC_SetPriority(EXTI2_IRQn, 0, 0);
+  HAL_NVIC_SetPriority(EXTI0_IRQn, 3, 0);
+  HAL_NVIC_EnableIRQ(EXTI0_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI1_IRQn, 3, 0);
+  HAL_NVIC_EnableIRQ(EXTI1_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI2_IRQn, 3, 0);
   HAL_NVIC_EnableIRQ(EXTI2_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 3, 0);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
 }
 
