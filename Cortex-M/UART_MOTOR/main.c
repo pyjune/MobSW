@@ -127,8 +127,9 @@ int main(void)
 			  if(p!=NULL)
 			  {
 				  duty = atoi(p+1);
+				  // 모터 구동...duty 0이면 off
 			  }
-			  // 모터 구동...duty 0이면 off
+			  
 			  
 		  }
 		  rxComplete = 0;
